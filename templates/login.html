@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+        <h2>Login</h2>
+{% endblock %}
+
+{% block content %}
+
+        {% if login_successful %}
+        successfully logged in!
+        {% endif %}
+
+        {% if login_unsuccessful %}
+        ERROR: username/password not found
+        {% endif %}
+
+        {% if login_default or login_unsuccessful %}
+        <form action=/login method=POST>
+            <table>
+                <tr><td>username</td><td><input type=text name=username></td></tr>
+                <tr><td>password</td><td><input type=password name=password></td></tr>
+            </table>
+            <input type=submit value='log in'>
+        </form>
+        <p>
+            Forgot Your Password?
+            <a href="resetpass.html">Click to Reset It</a>
+        </p>
+        <p>New User? <a href="register.html">Click to Register!</a></p>
+        {% endif %}
+{% endblock %}
