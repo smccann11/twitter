@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+        <h2>Homepage</h2>
+{% endblock %}
+
+{% block content %}
+        {% if username %}
+        You are logged in as: {{username}}
+        {% endif %}
+        <br>
+        <br>
+        <table>
+            <tr><td>ID</td><td>username</td><td>message</td><td>time</td></tr>
+        {% for message in messages %}
+        <tr><td>{{ message.id }}</td><td>{{ message.username }}</td><td>{{ message.text }}</td><td>{{ message.created_at }}</td><td>{% if username==message.username %}<a href='/delete_message/'>delete message</a>{% endif %}</td></tr>
+        {% endfor %}
+        </table>
+{% endblock %}
